@@ -1,0 +1,1 @@
+del /a /f /s /q "*.aux" "*.bbl" "*.bcf" "*.blg" "*.blg" "*.dvi" "*.gz" "*.idx" "*.ilg" "*.ind"  "*.log" "*.ps" "*.toc" "*.xml" "*.fdb_latexmk" "*.fls"
