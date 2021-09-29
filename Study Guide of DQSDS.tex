@@ -1,36 +1,26 @@
 \documentclass{qbook}
 \addbibresource{bib/Reference.bib}  % 导入参考文献数据库
+
 \begin{document}
+\setcounter{page}{-1}
 \pagestyle{empty}
 \include{tex/cover}  % 载入封面
-\begin{center}
-	\Large{\sffamily\bfseries\heiti 编译日期: \today} \\ \vspace{1em}
-	\Large{\sffamily\bfseries\heiti 任何建议及错误信息请发送至邮箱} \\
-	\texttt{shenzhy2020@lzu.edu.cn}
-\end{center} 
-\vfill
-\vspace{30em}
-\begin{tabular*}{\textwidth}{ccc}
-	\includegraphics{figure/by-nc.eps}
-	& \begin{minipage}[b]{0.6\textwidth}
-		\small\sffamily
-		本作品采用知识共享 署名-非商业性使用 4.0 国际 许可协议进行许可. 访问\url{http://creativecommons.org/licenses/by-nc/4.0/}查看该许可协议.
-	\end{minipage}
-\end{tabular*}  
-\thispagestyle{empty}
-\frontmatter  % 对前言和概览用罗马数字作为页码
+
+\frontmatter  % 对前言和介绍用罗马数字作为页码
 \pagestyle{empty}
 \include{tex/preface}
 \pagestyle{empty}
 \include{tex/introduction}
 \tableofcontents
 \cleardoublepage
+
 \mainmatter	  % 对正文用阿拉伯数字作为页码
 %======================================================================
 % 正文内容
 \pagestyle{fancy}
-\setcounter{page}{0}
+%\setcounter{page}{0}
 \include{tex/chapter1}
+
 
 \backmatter
 %======================================================================
@@ -39,4 +29,5 @@
 \printindex
 \makeatletter
 \makeatother
+
 \end{document}

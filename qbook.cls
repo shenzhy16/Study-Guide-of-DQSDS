@@ -29,7 +29,12 @@
 \RequirePackage[centering,a4paper,body={16cm,22cm}]{geometry} 
 \RequirePackage{fancyhdr}
 \RequirePackage{lastpage}
-\RequirePackage{amsmath,mathtools,amsthm,amsfonts,amssymb,bm}
+\RequirePackage{amsmath}
+\RequirePackage{mathtools}
+\RequirePackage{amsthm}
+%\RequirePackage{amsfonts}
+%\RequirePackage{amssymb}
+\RequirePackage{bm}
 \RequirePackage[defaultsups]{newtxtext}
 \RequirePackage{newtxmath}
 \RequirePackage{sourcecodepro}
@@ -49,7 +54,16 @@
 \RequirePackage[backend=biber, hyperref=auto,maxnames=4]{biblatex}
 \RequirePackage{xcolor}
 \RequirePackage{listings}
-\RequirePackage[unicode, xetex, bookmarksnumbered, colorlinks, urlcolor=blue, linkcolor=purple, citecolor=red, plainpages=false, pdfstartview=FitH]{hyperref}
+
+%======================================================================
+% 设置索引
+\RequirePackage{imakeidx}
+\makeindex[
+	columns=3,
+	title={名词索引},
+	intoc]
+%======================================================================
+\RequirePackage[unicode, hyperindex, bookmarksnumbered, colorlinks, urlcolor=blue, linkcolor=purple, citecolor=red, plainpages=false, pdfstartview=FitH]{hyperref}
 \RequirePackage{bookmark}
 \bookmarksetup{
 	open,	
@@ -63,12 +77,6 @@
 \RequirePackage{algorithm, algorithmicx, algpseudocode}
 \RequirePackage{siunitx}
 \RequirePackage{tikz}
-\RequirePackage{imakeidx}
-
-
-%======================================================================
-% 设置索引
-\makeindex[columns=3, title=名词索引, intoc]
 %======================================================================
 % 导入tikz库
 \usetikzlibrary{shapes.geometric, arrows}
@@ -77,11 +85,12 @@
 %======================================================================
 % 设置 PDF 文件信息
 \hypersetup{
-	pdfauthor = {333},
-	pdftitle = {Q-book},
-	pdfkeywords = {template}}
+	pdfauthor = {沈卓洋},
+	pdftitle = {Dynamics of Quasi-Stable Dissipative Systems学习指南},
+	pdfkeywords = {动力系统}
+}
 %======================================================================
-% 汉化名词索引、参考文献标题
+% 汉化参考文献标题
 \g@addto@macro\backmatter{
 	\renewcommand{\em}{\itshape} % 书目部分以斜体表示强调	
 	\renewcommand{\refname}{参考文献}
@@ -145,10 +154,9 @@
 \linespread{1.3}
 %======================================================================
 % 设置名称：目录、表格索引、插图索引
-\ctexset{contentsname={\q@contentsname}}
-\ctexset{listfigurename={\q@listfigurename}}
-\ctexset{listtablename={\q@listtablename}}
-\renewcommand{\lstlistingname}{\q@value@listingname}
+\ctexset{contentsname={目\quad录}}
+\ctexset{listfigurename={图}}
+\ctexset{listtablename={表格索引}}
 %======================================================================
 % 定制章节样式
 \titleformat{\chapter}[display]{\flushleft}{
@@ -196,8 +204,8 @@
 
 \captionsetup[sub]{font=footnotesize}
 \DeclareCaptionOption{bi-first}[]{
-    \def\tablename{\q@tablename}
-    \def\figurename{\q@figurename}
+    \def\tablename{表}
+    \def\figurename{图}
 }
 \DeclareCaptionOption{bi-second}[]{
     \def\tablename{Table}
@@ -329,12 +337,12 @@
  	},
  }
 
-\newtcbtheorem[auto counter,number within=chapter]{mydef}{\q@label@defn}{defstyle}{def}
-\newtcbtheorem[use counter from=mydef]{mythm}{\q@label@thm}{thmstyle}{thm} 
-\newtcbtheorem[use counter from=mydef]{myprop}{\q@label@prop}{propstyle}{prop} 
-\newtheorem{keypoint}{\q@label@keypoint}[chapter]  %环境名keypoint
+\newtcbtheorem[auto counter,number within=chapter]{defination}{定义}{defstyle}{def}
+\newtcbtheorem[use counter from=defination]{thmorem}{定理}{thmstyle}{thm} 
+\newtcbtheorem[use counter from=defination]{propsition}{性质}{propstyle}{prop} 
+\newtheorem{keypoint}{关键点}[chapter]  %环境名keypoint
 
-\newtheorem{observation}[tcb@cnt@mydef]{{\makebox[0pt][r]{\scriptsize\color{red!90}\textdbend\quad}\textbf{\q@label@rem}}}
+\newtheorem{observation}[tcb@cnt@defination]{{\makebox[0pt][r]{\scriptsize\color{red!90}\textdbend\quad}\textbf{注}}}
 
 \newenvironment{remark}   
 {\begin{observation}} {\end{observation}}
@@ -376,11 +384,11 @@
 %======================================================================
 % 前言
 \newenvironment{pre}{
-	\ch\chapter{\q@pre}{}}{}
+	\ch\chapter{前\quad言}{}}{}
 %======================================================================
 % 介绍
 \newenvironment{introduction}{
-\ch\chapter{\q@introduction}{}}{}
+\ch\chapter{介\quad绍}{}}{}
 %======================================================================
 % 设置目录
 \renewcommand\tableofcontents{%
@@ -422,7 +430,7 @@ linewidth=1pt]{exaBox}
 	\thmnote{\nobreakspace\the\thm@notefont\heiti\color{sthlmGreen}\nobreakspace(#3)}}% Optional
 
 \theoremstyle{blacknumexa}
-\newtheorem{exampleT}[tcb@cnt@mydef]{例}
+\newtheorem{exampleT}[tcb@cnt@defination]{例}
 \newenvironment{example}{\begin{exaBox}\begin{exampleT}}{\hfill{\color{sthlmGreen}}\end{exampleT}\end{exaBox}}
 %======================================================================
 %定制例子中的横线
