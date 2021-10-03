@@ -8,10 +8,12 @@
 
 \frontmatter  % 对前言和介绍用罗马数字作为页码
 \pagestyle{empty}
+\include{tex/Mypreface}
+\pagestyle{empty}
 \include{tex/preface}
+\tableofcontents
 \pagestyle{empty}
 \include{tex/introduction}
-\tableofcontents
 \cleardoublepage
 
 \mainmatter	  % 对正文用阿拉伯数字作为页码
@@ -19,6 +21,7 @@
 % 正文内容
 \pagestyle{fancy}
 %\setcounter{page}{0}
+
 \include{tex/chapter1}
 
 

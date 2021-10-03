@@ -2,12 +2,43 @@
 %%==================================================
 \chapter{基本概念}
 
-本章收集了一般的动力系统理论中的基本定义、概念和最简单的说明性称述。我们还描述了所有1维和2维连续动力系统的可能场景，并通过例子，讨论了主要的分歧图像。我们后半部分叙述的主要目的是，给读者以低维(1或2维)的连续演化时间算子会产生什么样动力学行为的感觉.
+本章收集了一般的动力系统理论中的基本定义、概念和最简单的说明性陈述。我们还描述了所有1维和2维连续动力系统的可能场景，并通过例子讨论了主要的分歧图像。我们后半部分叙述的主要目的是，给读者以低维(1或2维)的连续时间演化算子会产生什么样动力学行为的感觉。
 
-我们主要遵循给出的表达，并且依赖经典的常微分材料；见\cite{Nemytskii60}
+我们主要遵循\cite{Nemytskii60}和\cite{Sibirsky75}的表述方式，并且依赖经典的常微分材料；见\cite{Coddington55}, \cite{Hartman02}, \cite{Lefschetz77}以及\cite{Lefschetz77}和\cite{Lefschetz74}。
 
 \section{演化算子和动力系统}
-如同介绍中已经提及的，动力系统的概念包括可能出现的状态的集合(相空间)和状态关于时间的演化法则。之后的叙述中，我们选取完备的度量空间作为相空间，我们记$\mathbb{T}_{+}$为$\mathbb{T}$上的非负元素，其中$\mathbb{T}$为$\mathbb{R}$或$\mathbb{Z}$，用以代表时间。
-\begin{defination}{演化算子}{}\index{演化算子}
+如同介绍中已经提及的，动力系统的概念包括可能出现的状态的集合(相空间)和状态关于时间的演化法则。在之后的叙述中，我们选取完备的度量空间作为相空间，记$\mathbb{T}_{+}$为$\mathbb{T}$上的非负元素用以代表时间，其中$\mathbb{T}$为$\mathbb{R}$或$\mathbb{Z}$。
+
+\begin{defination}{演化算子}{1}\index{演化算子}
 	设$X$是完备的度量空间，$\mathbb{T}=\mathbb{Z}$或$\mathbb{R}$，对任意$t\in\mathbb{T}$，$S_{t}:X\to X$是连续映射，并且满足半群性质，即：$$S_{0}=id_{X},\quad S_{t+\tau}=S_{t}\circ S_{\tau},\quad\forall t,\tau\in\mathbb{T}^{+},$$则称$\{S_{t}\}_{t\in \mathbb{T}^{+}}$为演化算子(或演化半群、半流)。
 \end{defination}
+
+在$\mathbb{T}=\mathbb{R}$的情形中，我们额外假设映射$t:\to S_{t}x$是$\mathbb{R}_{+}$到$X$上关于$x$的连续映射。我们称$(X,S_{t})$为相空间为$X$、演化算子为$S_{t}$的\textbf{动力系统}。
+
+在$\mathbb{T}=\mathbb{Z}$时，演化算子(以及动力系统)被称为离散(或关于离散时间)的。如果$\mathbb{T}=\mathbb{R}$，则$S_{t}$(同理，$(X,S_{t})$)被称为关于时间连续的演化算子(动力系统)。如果相空间可以被定义维数(例如，当$X$为线性空间时)，则$\dim X$被称为动力系统的维数。
+
+接下来以一个例子来说明\rdef{def:1}。
+
+\begin{example}{常微分方程}
+	设$F:\mathbb{R}^{d}\to\mathbb{R}^{d}$为(非线性)映射。考虑方程
+	\begin{equation}\label{Example1Equ}
+		\frac{\mathrm{d}u(t)}{\mathrm{d}t}=F(u(t)),\quad t\geqslant 0,\quad u(0)=u_{0}\in\mathbb{R}^{d}.
+	\end{equation}
+	如果对任意初始点$u_{0}\in\mathbb{R}^{d}$，这个问题都有依赖于$u_{0}$的唯一解，则它在$X=\mathbb{R}^{d}$上，以$S_{t}u_{0}=u(t,u_{0})$的形式生成了一个演化半群，其中$u(t,u_{0})$是问题\ref{Example1Equ}的解。于是，我们得到了相空间$X=\mathbb{R}^{d}$上的动力系统$(X,\mathbb{R}^{d})$。
+\end{example}
+
+\begin{example}{映射}
+	设$X$是完备的度量空间。考虑映射$F:X\to X$。令$n\in\mathbb{Z}_{+}$，则$F$的$n$重复合$S_{n}\cong F\circ\cdots\cdots F$形成了一个演化算子序列$\{S_{n}\}_{n=0}^{\infty}$。如果$F$是连续映射，则我们得到了一个离散的动力系统$(X,S_{n})$。于是，$(X,F)$完全地决定了这个(离散)动力系统。这就是为什么由空间$X$和映射$F$组成的$(X,F)$也经常被称为动力系统。
+\end{example}
+
+接下来的例子展示了如何通过单个映射来生成一个连续时间的动力系统。
+
+\begin{exercise}
+设$\alpha,\beta>0$并且$\alpha,\beta\neq 1$
+
+\end{exercise}
+
+\begin{proof}
+	tmp
+\end{proof}
+

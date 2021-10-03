@@ -12,9 +12,6 @@
 \PassOptionsToPackage{no-math}{fontspec}
 \LoadClass[a4paper,UTF8]{ctexbook}
 %======================================================================
-% 导入 qbook.cfg 文件
-\AtEndOfClass{\input{qbook.cfg}} 
-%======================================================================
 % 导入 LaTeX 宏包
 \RequirePackage{extarrows}
 \RequirePackage{eso-pic}
@@ -269,7 +266,7 @@
 % Setting Package siunitx
 \sisetup{detect-all} % Detecting fonts
 %======================================================================
-% 定制定理、定义、观察、规则、keypoint环境
+% 定制定理、定义、观察、规则、习题环境
  \tcbset{
  	commondef/.style={
  		fontupper=\kaishu,
@@ -337,10 +334,10 @@
  	},
  }
 
-\newtcbtheorem[auto counter,number within=chapter]{defination}{定义}{defstyle}{def}
+\newtcbtheorem[auto counter,number within=section]{defination}{定义}{defstyle}{def}
 \newtcbtheorem[use counter from=defination]{thmorem}{定理}{thmstyle}{thm} 
 \newtcbtheorem[use counter from=defination]{propsition}{性质}{propstyle}{prop} 
-\newtheorem{keypoint}{关键点}[chapter]  %环境名keypoint
+\newtheorem{exercise}[tcb@cnt@defination]{习题}  %环境名exercise
 
 \newtheorem{observation}[tcb@cnt@defination]{{\makebox[0pt][r]{\scriptsize\color{red!90}\textdbend\quad}\textbf{注}}}
 
@@ -357,7 +354,7 @@
 \newcommand{\rthm}[1]{\text{{\color{purple}{定理}}} \ref{#1}}
 \newcommand{\mylem}[1]{\text{引理} \ref{#1}}  
 \newcommand{\rexa}[1]{\text{{\color{purple}{例}}} \ref{#1}}
-\renewcommand{\proofname}{\bfseries\q@label@proof}  
+\renewcommand{\proofname}{\bfseries证明}  
 %======================================================================
 % 设置页眉与页脚样式
 \newcommand\q@fancyhead{\small\kaishu}
@@ -381,14 +378,6 @@
 	\thispagestyle{empty}
 	\newpage
 	\fi}
-%======================================================================
-% 前言
-\newenvironment{pre}{
-	\ch\chapter{前\quad言}{}}{}
-%======================================================================
-% 介绍
-\newenvironment{introduction}{
-\ch\chapter{介\quad绍}{}}{}
 %======================================================================
 % 设置目录
 \renewcommand\tableofcontents{%
@@ -431,7 +420,8 @@ linewidth=1pt]{exaBox}
 
 \theoremstyle{blacknumexa}
 \newtheorem{exampleT}[tcb@cnt@defination]{例}
-\newenvironment{example}{\begin{exaBox}\begin{exampleT}}{\hfill{\color{sthlmGreen}}\end{exampleT}\end{exaBox}}
+\newenvironment{example}[1]{\begin{exaBox}\begin{exampleT}\textbf{\small(\emph{#1})}}{\hfill{\color{sthlmGreen}}\end{exampleT}\end{exaBox}}
+
 %======================================================================
 %定制例子中的横线
 \newcommand{\cGreen}[1]{{\color{sthlmGreen}{#1}}}
