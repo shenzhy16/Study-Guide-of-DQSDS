@@ -94,7 +94,6 @@
 	\renewcommand{\bibname}{参考文献}
 }
 
-
 \DefineBibliographyStrings{english}{%
 	in = {刊于},
 	editor = {主编},
@@ -151,7 +150,7 @@
 \linespread{1.3}
 %======================================================================
 % 设置名称：目录、表格索引、插图索引
-\ctexset{contentsname={目\quad录}}
+\ctexset{contentsname={目\quad 录}}
 \ctexset{listfigurename={图}}
 \ctexset{listtablename={表格索引}}
 %======================================================================
@@ -221,7 +220,7 @@
 \renewcommand{\bottomfraction}{0.65}
 \renewcommand{\floatpagefraction}{0.60}
 %======================================================================
-% 定理、公式、图、表的编号为"3.1"的形式
+% 公式、图、表的编号为"3.1"的形式
 \renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
 \renewcommand{\thefigure}{\arabic{chapter}--\arabic{figure}}
 \renewcommand\p@subfigure{\thefigure}
@@ -356,6 +355,10 @@
 \newcommand{\rexa}[1]{\text{{\color{purple}{例}}} \ref{#1}}
 \renewcommand{\proofname}{\bfseries证明}  
 %======================================================================
+
+\newenvironment{PreChapter}[1]{
+	\ch\chapter{\heiti\textmd{\emph{#1}}}{}}{}
+
 % 设置页眉与页脚样式
 \newcommand\q@fancyhead{\small\kaishu}
 \def\markboxwidth{0.75\textwidth}
