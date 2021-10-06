@@ -48,18 +48,20 @@
 \RequirePackage[labelformat=empty]{caption}
 \RequirePackage[list=off]{bicaption}
 \RequirePackage{subcaption}
-\RequirePackage[backend=biber, hyperref=auto,maxnames=4]{biblatex}
+\RequirePackage[backend=biber, hyperref=auto, backref=true, backrefstyle=three, maxnames=4]{biblatex}
 \RequirePackage{xcolor}
 \RequirePackage{listings}
-
-%======================================================================
-% 设置索引
 \RequirePackage{imakeidx}
-\makeindex[
-	columns=3,
-	title={名词索引},
-	intoc]
-%======================================================================
+\makeindex[ % 设置符号索引
+	intoc = true,
+	name = {symbol},
+	title = {符号索引},
+	columns = 3]
+\makeindex[ % 设置名词索引
+	intoc = true,
+	name = {word},
+	title = {名词索引暨英译},
+	columns = 2]
 \RequirePackage[unicode, hyperindex, bookmarksnumbered, colorlinks, urlcolor=blue, linkcolor=purple, citecolor=red, plainpages=false, pdfstartview=FitH]{hyperref}
 \RequirePackage{bookmark}
 \bookmarksetup{
@@ -98,6 +100,8 @@
 	in = {刊于},
 	editor = {主编},
 	byeditor = {编者为},
+	backrefpage = {引用于 p.\!},
+	backrefpages = {引用于 pp.\!},
 }
 %======================================================================
 % 添加水印
@@ -146,13 +150,59 @@
 \newcommand{\ch}{\titleformat{\chapter}[display]{\centering}{}{-3mm}{\Huge\bfseries}
 	\titlespacing{\chapter}{0pt}{0pt}{2\baselineskip}}%用来将需要的章节标题居中
 %======================================================================
+% Set fontnote font size in threeparttable
+\appto\TPTnoteSettings{\footnotesize}
+%======================================================================
 % 行距缩放因子
 \linespread{1.3}
+%======================================================================
+% 浮动参数
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.65}
+\renewcommand{\floatpagefraction}{0.60}
+%======================================================================
+% 设置页眉与页脚样式
+\newcommand\q@fancyhead{\small\kaishu}
+\def\markboxwidth{0.75\textwidth}
+\pagestyle{fancy}
+\fancyhf{} 
+\fancyhead[LE,RO]{\sffamily\normalsize\thepage}  %在奇数页的右上角显示页码，偶数页的左上角显示页码
+\fancyhead[LO]{\nouppercase{\q@fancyhead\rightmark}} % 在奇数页的左侧显示小节名
+\fancyhead[RE]{\nouppercase{\q@fancyhead\leftmark}}  % 在偶数页的右侧显示章名  
+\renewcommand{\headrulewidth}{0.5pt} 
+\addtolength{\headheight}{2.5pt} 
+\renewcommand{\footrulewidth}{0pt} 
+\fancypagestyle{plain}{\fancyhead{}\renewcommand{\headrulewidth}{0pt}} 
+%======================================================================
+% Removes the header from odd empty pages at the end of chapters
+\makeatletter
+\renewcommand{\cleardoublepage}{
+	\clearpage\ifodd\c@page\else
+	\hbox{}
+	\vspace*{\fill}
+	\thispagestyle{empty}
+	\newpage
+	\fi}
+%======================================================================
+% 定义正文前的前言、介绍等环境
+\newenvironment{PreChapter}[1]{
+	\ch\chapter{\heiti\textmd{\emph{#1}}}{}}{}
 %======================================================================
 % 设置名称：目录、表格索引、插图索引
 \ctexset{contentsname={目\quad 录}}
 \ctexset{listfigurename={图}}
 \ctexset{listtablename={表格索引}}
+%======================================================================
+% 设置目录
+\renewcommand\tableofcontents{%
+	\cleardoublepage
+	\pdfbookmark[0]{\contentsname}{toc}
+	\chapter*{\centerline{\contentsname}}
+	\@mkboth{\MakeUppercase\contentsname}{\MakeUppercase\contentsname}%
+	\@starttoc{toc}%
+}
+\addtocontents{toc}{\let\string\CTEX@spaceChar\relax}
 %======================================================================
 % 定制章节样式
 \titleformat{\chapter}[display]{\flushleft}{
@@ -211,22 +261,6 @@
 \captionsetup[bi-second]{bi-second}
 
 %======================================================================
-% Set fontnote font size in threeparttable
-\appto\TPTnoteSettings{\footnotesize}
-%======================================================================
-% 浮动参数
-\renewcommand{\textfraction}{0.15}
-\renewcommand{\topfraction}{0.85}
-\renewcommand{\bottomfraction}{0.65}
-\renewcommand{\floatpagefraction}{0.60}
-%======================================================================
-% 公式、图、表的编号为"3.1"的形式
-\renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
-\renewcommand{\thefigure}{\arabic{chapter}--\arabic{figure}}
-\renewcommand\p@subfigure{\thefigure}
-\renewcommand{\thetable}{\arabic{chapter}--\arabic{table}}
-\AtBeginDocument{\renewcommand{\thelstlisting}{\arabic{chapter}--\arabic{lstlisting}}}
-%======================================================================
 % 使用enumitem宏包配制列表环境
 \setlist{nosep}  % 紧凑间距
 \setlist*{leftmargin=*}  % 列表和段落头对齐
@@ -264,6 +298,30 @@
 %======================================================================
 % Setting Package siunitx
 \sisetup{detect-all} % Detecting fonts
+%======================================================================
+% 证明加粗
+\renewcommand{\proofname}{\bfseries证明}
+%======================================================================
+% 定制各种引用命令和样式
+\newcommand{\requ}[1]{\hyperref[#1]{(\ref{#1})}}
+\newcommand{\rcpt}[1]{\hyperref[#1]{第\ref{#1}章}}
+\newcommand{\rsec}[1]{\hyperref[#1]{第\ref{#1}节}}
+\newcommand{\rrmk}[1]{\hyperref[#1]{注 \ref{#1}}}
+\newcommand{\rfig}[1]{\hyperref[#1]{图 \ref{#1}}}
+\newcommand{\rtab}[1]{\hyperref[#1]{表 \ref{#1}}}
+\newcommand{\rprop}[1]{\hyperref[#1]{性质 \ref{#1}}}
+\newcommand{\rdef}[1]{\hyperref[#1]{定义 \ref{#1}}}
+\newcommand{\rthm}[1]{\hyperref[#1]{定理 \ref{#1}}}
+\newcommand{\rlem}[1]{\hyperref[#1]{引理 \ref{#1}}}
+\newcommand{\rexa}[1]{\hyperref[#1]{例 \ref{#1}}}
+\newcommand{\rerr}[1]{\hyperref[#1]{本书位置}}
+%======================================================================
+% 公式、图、表的编号为"3.1.1"的形式
+\renewcommand{\theequation}{\arabic{chapter}.\arabic{section}.\arabic{equation}}
+\renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
+\renewcommand\p@subfigure{\thefigure}
+\renewcommand{\thetable}{\arabic{chapter}.\arabic{section}--\arabic{table}}
+\AtBeginDocument{\renewcommand{\thelstlisting}{\arabic{chapter}.\arabic{section}--\arabic{lstlisting}}}
 %======================================================================
 % 定制定理、定义、观察、规则、习题环境
  \tcbset{
@@ -337,60 +395,9 @@
 \newtcbtheorem[use counter from=defination]{thmorem}{定理}{thmstyle}{thm} 
 \newtcbtheorem[use counter from=defination]{propsition}{性质}{propstyle}{prop} 
 \newtheorem{exercise}[tcb@cnt@defination]{习题}  %环境名exercise
-
 \newtheorem{observation}[tcb@cnt@defination]{{\makebox[0pt][r]{\scriptsize\color{red!90}\textdbend\quad}\textbf{注}}}
-
 \newenvironment{remark}   
 {\begin{observation}} {\end{observation}}
-%======================================================================
-% 引用样式为“图x.y”等
-\newcommand{\requ}[1]{(\ref{#1})}
-\newcommand{\rremark}[1]{\text{{\color{purple}{注}}} \ref{#1}}
-\newcommand{\rfig}[1]{\text{{\color{purple}{图}}} \ref{#1}}
-\newcommand{\rtab}[1]{\text{{\color{purple}{表}}} \ref{#1}}
-\newcommand{\rprop}[1]{\text{{\color{purple}{性质}}} \ref{#1}}
-\newcommand{\rdef}[1]{\text{{\color{purple}{定义}}} \ref{#1}}
-\newcommand{\rthm}[1]{\text{{\color{purple}{定理}}} \ref{#1}}
-\newcommand{\mylem}[1]{\text{引理} \ref{#1}}  
-\newcommand{\rexa}[1]{\text{{\color{purple}{例}}} \ref{#1}}
-\renewcommand{\proofname}{\bfseries证明}  
-%======================================================================
-
-\newenvironment{PreChapter}[1]{
-	\ch\chapter{\heiti\textmd{\emph{#1}}}{}}{}
-
-% 设置页眉与页脚样式
-\newcommand\q@fancyhead{\small\kaishu}
-\def\markboxwidth{0.75\textwidth}
-\pagestyle{fancy}
-\fancyhf{} 
-\fancyhead[LE,RO]{\sffamily\normalsize\thepage}  %在奇数页的右上角显示页码，偶数页的左上角显示页码
-\fancyhead[LO]{\nouppercase{\q@fancyhead\rightmark}} % 在奇数页的左侧显示小节名
-\fancyhead[RE]{\nouppercase{\q@fancyhead\leftmark}}  % 在偶数页的右侧显示章名  
-\renewcommand{\headrulewidth}{0.5pt} 
-\addtolength{\headheight}{2.5pt} 
-\renewcommand{\footrulewidth}{0pt} 
-\fancypagestyle{plain}{\fancyhead{}\renewcommand{\headrulewidth}{0pt}} 
-%======================================================================
-% Removes the header from odd empty pages at the end of chapters
-\makeatletter
-\renewcommand{\cleardoublepage}{
-	\clearpage\ifodd\c@page\else
-	\hbox{}
-	\vspace*{\fill}
-	\thispagestyle{empty}
-	\newpage
-	\fi}
-%======================================================================
-% 设置目录
-\renewcommand\tableofcontents{%
-  \cleardoublepage
-  \pdfbookmark[0]{\contentsname}{toc}
-  \chapter*{\centerline{\contentsname}}
-  \@mkboth{\MakeUppercase\contentsname}{\MakeUppercase\contentsname}%
-  \@starttoc{toc}%
-}
-\addtocontents{toc}{\let\string\CTEX@spaceChar\relax}
 %======================================================================
 %定制example环境
 \RequirePackage[framemethod=default]{mdframed} 
@@ -423,12 +430,16 @@ linewidth=1pt]{exaBox}
 
 \theoremstyle{blacknumexa}
 \newtheorem{exampleT}[tcb@cnt@defination]{例}
-\newenvironment{example}[1]{\begin{exaBox}\begin{exampleT}\textbf{\small(\emph{#1})}}{\hfill{\color{sthlmGreen}}\end{exampleT}\end{exaBox}}
+\newenvironment{example}[2]{\begin{exaBox}\begin{exampleT}\textbf{\small(#1)}\label{exa:#2}}{\hfill{\color{sthlmGreen}}\end{exampleT}\end{exaBox}}
 
 %======================================================================
 %定制例子中的横线
 \newcommand{\cGreen}[1]{{\color{sthlmGreen}{#1}}}
 \newcommand{\soln}[1]{\par\vspace{1.5pt}\makebox[5pt]{\begin{tikzpicture}[overlay]
-		\node at (-15pt,0pt){\textcolor{sthlmGreen}{\ding{45}}};\end{tikzpicture}}\cGreen{\noindent\hrulefill\vskip 1pt}}
+			\node at (-15pt,0pt){\textcolor{sthlmGreen}{\ding{45}}};\end{tikzpicture}}\cGreen{\noindent\hrulefill\vskip 1pt}}
 %======================================================================
+\newcommand{\errPositon}[2]{\begin{itemize}\item \textbf{原书位置: #1;}\quad\textbf{\rerr{#2}}\end{itemize}}
+\newcommand{\errOrig}{\begin{description}\item[\hspace{15.25pt}原文: ]\end{description}}
+\newcommand{\errCorr}{\begin{description}\item[\hspace{15.25pt}更正: ]\end{description}}
+
 \endinput

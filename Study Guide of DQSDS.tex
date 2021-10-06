@@ -1,26 +1,31 @@
 \documentclass{qbook}
 \addbibresource{bib/Reference.bib}  % 导入参考文献数据库
 \begin{document}
-\setcounter{page}{-1}
+\setcounter{page}{-1} % 设置计数为-1, 确保正文从0开始
 \include{tex/cover}  % 载入封面
 %======================================================================
-\frontmatter  % 对前言和介绍用罗马数字作为页码
-% 前言、原作前言、目录、介绍
-\include{tex/Mypreface}
-\include{tex/preface}
-\tableofcontents
-\include{tex/introduction}
+\frontmatter  % 对前言和介绍等用罗马数字作为页码
+\include{tex/mypreface} % 前言
+\include{tex/preface} % 原作前言
+\tableofcontents % 目录
+\include{tex/introduction} % 介绍
 %======================================================================
 \mainmatter	  % 对正文用阿拉伯数字作为页码
-% 正文内容
-\pagestyle{fancy}
+\pagestyle{fancy} % 设置页眉页脚
 \include{tex/chapter1}
 \include{tex/chapter2}
-\backmatter
+\include{tex/chapter3}
+\include{tex/chapter4}
+\include{tex/chapter5}
+\include{tex/chapter6}
+\appendix % 之后是附录
+\include{tex/appendix}
+\include{tex/errata}
+\backmatter % 结束正文, 取消章节序号
 %======================================================================
-% 打印参考文献
-\printbibliography[heading=bibintoc]
-\printindex
-\makeatletter
+\printbibliography[heading=bibintoc] % 打印参考文献
+\printindex[symbol] % 打印索引
+\printindex[word] 
+\makeatletter 
 \makeatother
 \end{document}
