@@ -2,23 +2,23 @@
 
 本章收集了一般的动力系统理论中的基本定义、概念和最简单的说明性陈述. 我们还描述了所有1维和2维连续动力系统的可能场景, 并通过例子讨论了主要的分歧图像. 我们后半部分叙述的主要目的是, 给读者以低维(1或2维)的连续时间演化算子会产生什么样动力学行为的感觉.
 
-我们主要遵循\cite{Nemytskii60}和\cite{Sibirsky75}的表述方式, 并且依赖经典的常微分材料；见\cite{Coddington55}, \cite{Hartman02}, \cite{Lefschetz77}以及\cite{Bautin90}和\cite{Reissing74}.
+我们主要遵循\cite{Nemytskii60}和\cite{Sibirsky75}的表述方式, 并且依赖经典的常微分材料; 见\cite{Coddington55}, \cite{Hartman02}, \cite{Lefschetz77}以及\cite{Bautin90}和\cite{Reissing74}.
 
 \section{演化算子和动力系统}
 如同介绍中已经提及的, 动力系统的概念包括可能出现的状态的集合(相空间)和状态关于时间的演化法则. 在之后的叙述中, 我们选取完备的度量空间作为相空间, 记$\mathbb{T}_{+}$为$\mathbb{T}$上的非负元素用以代表时间, 其中$\mathbb{T}$为$\mathbb{R}$或$\mathbb{Z}$.
 
-\begin{defination}{演化算子}{OE}\index[word]{yanhuasuanzi@演化算子(evolution operator)}\index[symbol]{$S_{t}$}
-	设$X$是完备的度量空间, $\mathbb{T}=\mathbb{Z}$或$\mathbb{R}$, 对任意$t\in\mathbb{T}$, $S_{t}:X\to X$是连续映射, 并且满足半群性质, 即：$$S_{0}=id_{X},\quad S_{t+\tau}=S_{t}\circ S_{\tau},\quad\forall t,\tau\in\mathbb{T}^{+},$$则称$\{S_{t}\}_{t\in \mathbb{T}^{+}}$为演化算子(或演化半群、半流). 
-\end{defination}
+\begin{definition}{演化算子}{EO}\index[word]{yanhuasuanzi@演化算子(evolution operator)}\index[symbol]{$S_{t}$}
+	设$X$是完备的度量空间, $\mathbb{T}=\mathbb{Z}$或$\mathbb{R}$, 对任意$t\in\mathbb{T}$, $S_{t}:X\mapsto X$是连续映射, 并且满足半群性质, 即：$$S_{0}=id_{X},\quad S_{t+\tau}=S_{t}\circ S_{\tau},\quad\forall t,\tau\in\mathbb{T}^{+},$$则称$\{S_{t}\}_{t\in \mathbb{T}^{+}}$为演化算子(或演化半群、半流). 
+\end{definition}
 
-在$\mathbb{T}=\mathbb{R}$的情形中, 我们额外假设映射$t:\to S_{t}x$是$\mathbb{R}_{+}$到$X$上关于$x$的连续映射.  我们称$(X,S_{t})$为相空间为$X$、演化算子为$S_{t}$的\textbf{动力系统}. 
+在$\mathbb{T}=\mathbb{R}$的情形中, 我们额外假设映射$t:\mapsto S_{t}x$是$\mathbb{R}_{+}$到$X$上关于$x$的连续映射.  我们称$(X,S_{t})$为相空间为$X$、演化算子为$S_{t}$的\textbf{动力系统}. 
 
 在$\mathbb{T}=\mathbb{Z}$时, 演化算子(以及动力系统)被称为离散(或关于离散时间)的.  如果$\mathbb{T}=\mathbb{R}$, 则$S_{t}$(同理, $(X,S_{t})$)被称为关于时间连续的演化算子(动力系统). 如果相空间可以被定义维数(例如, 当$X$为线性空间时), 则$\dim X$被称为动力系统的维数. 
 
-接下来以一个例子来说明\rdef{def:OE}. 
+接下来以一个例子来说明\rdef{def:EO}. 
 
 \begin{example}{常微分方程}{ODE}
-	设$F:\mathbb{R}^{d}\to\mathbb{R}^{d}$为(非线性)映射. 考虑方程
+	设$F:\mathbb{R}^{d}\mapsto\mathbb{R}^{d}$为(非线性)映射. 考虑方程
 	\begin{equation}\label{equ:exa1}
 		\frac{\mathrm{d}u(t)}{\mathrm{d}t}=F(u(t)),\quad t\geqslant 0,\quad u(0)=u_{0}\in\mathbb{R}^{d}.
 	\end{equation}
@@ -26,21 +26,71 @@
 \end{example}
 
 \begin{example}{映射}{MP}
-	设$X$是完备的度量空间. 考虑映射$F:X\to X$. 令$n\in\mathbb{Z}_{+}$, 则$F$的$n$重复合$S_{n}\cong F\circ\cdots\cdots F$形成了一个演化算子序列$\{S_{n}\}_{n=0}^{\infty}$. 如果$F$是连续映射, 则我们得到了一个离散的动力系统$(X,S_{n})$. 于是, $(X,F)$完全地决定了这个(离散)动力系统. 这就是为什么由空间$X$和映射$F$组成的$(X,F)$也经常被称为动力系统. 
+	设$X$是完备的度量空间. 考虑映射$F:X\mapsto X$. 令$n\in\mathbb{Z}_{+}$, 则$F$的$n$重复合$S_{n}\equiv F\circ\cdots\cdots F$形成了一个演化算子序列$\{S_{n}\}_{n=0}^{\infty}$. 如果$F$是连续映射, 则我们得到了一个离散的动力系统$(X,S_{n})$. 
 \end{example}
 
-接下来的例子展示了如何通过单个映射来生成一个连续时间的动力系统. 
+在\rexa{exa:MP}中, $(X,F)$完全地决定了(离散)动力系统$(X,S_{n})$, 因此$(X,F)$也经常被叫做动力系统. 接下来的例子展示了如何通过单个映射来生成一个连续时间的动力系统. 
 
 \begin{example}{映射生成的连续时间系统}{CTS}
-	和\rexa{exa:MP}一样, 设$X$是完备的度量空间，并且$F:X\to X$是连续映射. 考虑连续参数的微分方程$$u(t+1)=F(u(t)),\quad t\in\mathbb{R}_{+}.$$这个方程的任意解都可以轻易地通过定义在$[0,1]$上的函数$\phi(\xi)$, 以以下形式来构造, $$u(t)=S^{n}(\phi(t-n)),\quad n\leqslant t<n+1,\quad n\in\mathbb{Z}_{+},$$其中$S_{n}\cong F\circ\cdots\circ F$. $u$在$\mathbb{R}_{+}$上是连续的, 当$$\phi\in Y=\{\phi\in C([0,1],X):\phi(1)=F(\phi(0))\},$$其中$C([0,1],X)$是$[0,1]$到$X$的连续函数. 现在我们可以通过以下形式来定义$Y$中的连续时间演化算子$$S_{t}:\phi(\xi)\to F^{[t+\xi]}(\phi(\{t+\xi\})),\quad t\in\mathbb{R}_{+},$$
+	和\rexa{exa:MP}一样, 设$X$是完备的度量空间, 并且$F:X\mapsto X$是连续映射. 考虑连续参数的微分方程$$u(t+1)=F(u(t)),\quad t\in\mathbb{R}_{+}.$$这个方程的任意解都可以轻易地通过定义在$[0,1]$上的函数$\phi(\xi)$, 以以下形式来构造, $$u(t)=S^{n}(\phi(t-n)),\quad n\leqslant t<n+1,\quad n\in\mathbb{Z}_{+},$$其中$S_{n}\equiv F\circ\cdots\circ F$. $u$在$\mathbb{R}_{+}$上是连续的, 当$$\phi\in Y=\{\phi\in C([0,1],X):\phi(1)=F(\phi(0))\},$$其中$C([0,1],X)$是$[0,1]$到$X$的连续函数. 现在我们可以通过以下形式来定义$Y$中的连续时间演化算子$$S_{t}:\phi(\xi)\mapsto F^{[t+\xi]}(\phi(\{t+\xi\})),\quad t\in\mathbb{R}_{+},$$其中$[\xi]$是$\xi$的整数部分, $\{\xi\}$是$\xi$的小数部分. 
 \end{example}
 
-\begin{exercise}
-设$\alpha,\beta>0$并且$\alpha,\beta\neq 1$
+在\rexa{exa:CTS}中, 我们得到了一个连续时间的系统$(Y,S_{t})$. 这种类型的系统(主要是$X$是$\mathbb{R}$上的区间的情形)在\cite{Sharkovsky86}中有密集讨论; 亦可见\cite{Sharkovsky89}. 动力系统$(Y,S_{t})$的特点提供了最近被介绍和发展的理想湍流的概念的动机; 见\cite{Sharkovsky06}. 
 
+\begin{example}{Bebutov动力系统}{BDS}\index[word]{Bebutovdonglixitong@Bebutov动力系统(Bebutov dynamical system)}\index[word]{Bebutovduliang@Bebutov度量(Bebutov metric)}
+	设$X=C(\mathbb{R})$为所有$\mathbb{R}$上的连续函数以Bebutov度量构成的空间, 其中Bebutov度量定义为$$\mathrm{dist}(\psi,\phi)=\sup_{r>0}\min\left\{\sup_{|x|\leqslant r}|\psi(x)-\phi(x)|,\frac{1}{r}\right\}.$$在这种情况下, $X$成为一个完备的度量空间, 并且在Bebutov度量意义下的收敛等价于有界集上的一致收敛(见, 例如\cite{Sibirsky75}). 我们以左平移算子为演化算子$$(S_{t}f)(x)=f(x+t),\quad f\in X,\quad t\geqslant 0.$$
+\end{example}
+
+\rexa{exa:BDS}中的系统$(X,S_{t})$被称为Bebutov(平移)动力系统. 在这个系统的帮助下, 我们很容易展示不同种类的独立轨道的动力学(见, 例如\cite{Nemytskii60},\cite{Sibirsky75}和它们的参考文献). 
+
+\begin{remark}{闭算子\footnote{我们推荐初学者略过此注记}}{CEO}
+	许多动力学的一般性质不需要假设演化算子$S_{t}$的连续性, 这对研究一些无穷维偏微分方程模型很重要. 根据\cite{Pata07}, 我们可以假设演化算子$S_{t}$在相应的空间$X$下是闭的, 来代替$S_{t}$的连续性要求. 这意味着, 对任意$t>0$, 在$n\to\infty$时$x_{n}\to x, S_{t}x_{n}\to y$, 则$S_{t}x=y$, 显然$S_{t}$的连续性可以得到闭性. 然而, 逆命题仅在一些额外条件下成立, 即可以证明如果$S_{t}$是闭的, 并且把任何紧集映成相对紧集, 则$x\mapsto S_{t}$是连续的. 的确, 设在$n\to\infty$时$x_{n}\to x$, 对任意$t>0$我们可以选择子列$\{n_{m}\}$, 使得$S_{t}x_{n_{m}}\to y$. 由$S_{t}$的闭性知, $S_{t}x=y$, 进一步, $\{S_{t}x_{n}\}$除了$y=S_{t}x$以外没有其他极限点, 这意味着$S_{t}$的极限性. 另一方面, 映射$$f(x)=\begin{cases}(1-x)^{-1},&\quad 0\leqslant x<1;\\x,&\quad x\geqslant 1,\end{cases}$$是一个闭算子但不是连续的(其他例子见\cite{Pata07}). 闭演化算子产生于一类状态依赖的时滞偏微分方程系统的长时间动力学的研究(见\ref{sec:6.2}).
+	
+	我们还注意到, 算子的闭性是(无界)线性算子理论中众所周知的概念, 见例如\cite{Dunford58}的第二章或\cite{Yosida74}的第二章. 我们知道, 演化算子语境中的闭性概念, 在\cite{Babin92}中作为(强连续)演化半群的(弱)闭性(亦可见\cite{Chueshov99}和下面的\rthm{thm:})和\cite{Pata07}中的一般情形出现. 
+\end{remark}
+
+在定性行为的研究中, 动力系统的等价概念发挥着重要的作用. 这种等价关系使我们能够将广泛的动力系统划分成各种具有非常相似行为的系统. 
+
+\begin{definition}{拓扑等价}{TE}\index[word]{tuopudengjia@拓扑等价(topology equivalence)}\index[word]{tonggou@同构(isomorphic)}
+	设$(X,S_{t})$和$(\tilde{X},\tilde{S}_{t})$为两个动力系统, 如果存在同胚映射$h: X\cong\tilde{X}$的, 使得对任意$x\in X$和$t\in\mathbb{T}_{+}$, 都有$$
+	h(S_{t}x)=\tilde{S}_{t}h(x),$$则称动力系统$(X,S_{t})$和$(\tilde{X},\tilde{S}_{t})$\textbf{拓扑等价}(或\textbf{同构}), 记作$(X,S_{t})\cong (\tilde{X},\tilde{S}_{t})$.  此时称演化算子$S_{t}$与$\tilde{S}_{t}$\textbf{拓扑共轭}.  
+\end{definition}
+
+\begin{exercise}
+	设$h$是使得$(X,S_{t})$和$(\tilde{X},\tilde{S}_{t})$拓扑等价的同胚映射, 则$h^{-1}$亦是.
 \end{exercise}
 
 \begin{proof}
-	tmp
+	由$h^{-1},(h^{-1})^{-1}=h$的连续性知, $h^{-1}$是同胚映射. 任取$\tilde{x}\in \tilde{X}$, 由$h$是双射知, 存在$x\in X$使得$h(x)=\tilde{x}$, 那么对任意$t\in\mathbb{T}_{+}$, 有$$
+	h^{-1}(\tilde{S_{t}}\tilde{x})=h^{-1}(\tilde{S_{t}}h(x))=h^{-1}h(S_{t}x)=S_{t}x=S_{t}(h^{-1}\tilde{x}).$$
 \end{proof}
 
+接下来用一个习题来说明\rdef{def:TE}. 
+
+\begin{exercise}
+设$\alpha,\beta>0$并且$\alpha,\beta\neq 1$, 则两个离散(?)系统(时间呢?)$(\mathbb{R}_{+},\alpha x)$和$(\mathbb{R}_{+},\beta x)$拓扑等价当且仅当$\alpha,\beta$同时大于$1$或小于$1$.
+\end{exercise}
+
+\begin{proof}
+	必要性???: 设$(\mathbb{R}_{+},\alpha x)\cong (\mathbb{R}_{+},\beta x)$, 则存在同胚映射$h$, 使得$$
+	h(\alpha x)=\beta h(x),$$
+	
+	充分性: 设$\alpha,\beta$同时大于$1$或小于$1$, 则$\log_{\alpha}\beta>0$, 于是$h(x):=x^{\log_{\alpha}\beta}:\mathbb{R}_{+}\cong \mathbb{R}_{+}$, 并且对任意$x\in\mathbb{R}_{+}$, 有$$h(\alpha x)=(\alpha x)^{\log_{\alpha}\beta}=\beta x^{\log_{\alpha}\beta}=\beta h(x),$$即$(\mathbb{R}_{+},\alpha x)\cong (\mathbb{R}_{+},\beta x)$
+\end{proof}
+
+
+\section{轨道, 不变集和平衡点}
+现在我们来回忆一下动力系统理论中的几个著名概念(见, 例如)
+
+\begin{definition}{不变集}{IS}
+	设$S_{t}$是$X$.
+\end{definition}
+
+
+\section{Omega-极限集}
+\section{独立轨道的极限性质}
+\section{轨道的循环性质}
+\section{平衡点与Lyapunov稳定性}
+\section{$1$维连续系统的完整理论}
+\section{二维系统定性行为的可能类型}
+\section{分歧理论举例}

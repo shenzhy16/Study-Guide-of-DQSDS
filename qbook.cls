@@ -110,7 +110,7 @@
 			\vfill%
 			\centering%
 			\tikz[remember picture, overlay]%
-			\node [rotate = #1, scale = #2] at (8.5,-13)%
+			\node [rotate = #1, scale = #2] at (0,-0)%
 			{\textcolor{gray!80!cyan!30}{#3}};
 			\vfill}}}
 %======================================================================
@@ -306,14 +306,14 @@
 \newcommand{\requ}[1]{\hyperref[#1]{(\ref{#1})}}
 \newcommand{\rcpt}[1]{\hyperref[#1]{第\ref{#1}章}}
 \newcommand{\rsec}[1]{\hyperref[#1]{第\ref{#1}节}}
-\newcommand{\rrmk}[1]{\hyperref[#1]{注 \ref{#1}}}
-\newcommand{\rfig}[1]{\hyperref[#1]{图 \ref{#1}}}
-\newcommand{\rtab}[1]{\hyperref[#1]{表 \ref{#1}}}
-\newcommand{\rprop}[1]{\hyperref[#1]{性质 \ref{#1}}}
-\newcommand{\rdef}[1]{\hyperref[#1]{定义 \ref{#1}}}
-\newcommand{\rthm}[1]{\hyperref[#1]{定理 \ref{#1}}}
-\newcommand{\rlem}[1]{\hyperref[#1]{引理 \ref{#1}}}
-\newcommand{\rexa}[1]{\hyperref[#1]{例 \ref{#1}}}
+\newcommand{\rrmk}[1]{\hyperref[#1]{注\ref{#1}}}
+\newcommand{\rfig}[1]{\hyperref[#1]{图\ref{#1}}}
+\newcommand{\rtab}[1]{\hyperref[#1]{表\ref{#1}}}
+\newcommand{\rprop}[1]{\hyperref[#1]{性质\ref{#1}}}
+\newcommand{\rdef}[1]{\hyperref[#1]{定义\ref{#1}}}
+\newcommand{\rthm}[1]{\hyperref[#1]{定理\ref{#1}}}
+\newcommand{\rlem}[1]{\hyperref[#1]{引理\ref{#1}}}
+\newcommand{\rexa}[1]{\hyperref[#1]{例\ref{#1}}}
 \newcommand{\rerr}[1]{\hyperref[#1]{本书位置}}
 %======================================================================
 % 公式、图、表的编号为"3.1.1"的形式
@@ -391,19 +391,19 @@
  	},
  }
 
-\newtcbtheorem[auto counter,number within=section]{defination}{定义}{defstyle}{def}
-\newtcbtheorem[use counter from=defination]{thmorem}{定理}{thmstyle}{thm} 
-\newtcbtheorem[use counter from=defination]{propsition}{性质}{propstyle}{prop} 
-\newtheorem{exercise}[tcb@cnt@defination]{习题}  %环境名exercise
-\newtheorem{observation}[tcb@cnt@defination]{{\makebox[0pt][r]{\scriptsize\color{red!90}\textdbend\quad}\textbf{注}}}
-\newenvironment{remark}   
-{\begin{observation}} {\end{observation}}
+\newtcbtheorem[auto counter,number within=section]{definition}{定义}{defstyle}{def}
+\newtcbtheorem[use counter from=definition]{thmorem}{定理}{thmstyle}{thm}
+\newtcbtheorem[use counter from=definition]{propsition}{性质}{propstyle}{prop}
+\theoremstyle{definition}
+\newtheorem{exercise}[tcb@cnt@definition]{习题}  %环境名exercise
+\newtheorem{observation}[tcb@cnt@definition]{\makebox[0pt][r]{\scriptsize\color{red!90}\textdbend\quad}\textbf{注}}
+\newenvironment{remark}[2]{\begin{observation}\textbf{\small(#1)}\label{rrmk:#2}}{\end{observation}}
 %======================================================================
 %定制example环境
 \RequirePackage[framemethod=default]{mdframed} 
 % Example box
-\newmdenv[skipabove=5pt,
-skipbelow=7pt,
+\newmdenv[skipabove=10pt,
+skipbelow=0pt,
 rightline=false,
 leftline=true,
 topline=false,
@@ -429,7 +429,7 @@ linewidth=1pt]{exaBox}
 	\thmnote{\nobreakspace\the\thm@notefont\heiti\color{sthlmGreen}\nobreakspace(#3)}}% Optional
 
 \theoremstyle{blacknumexa}
-\newtheorem{exampleT}[tcb@cnt@defination]{例}
+\newtheorem{exampleT}[tcb@cnt@definition]{例}
 \newenvironment{example}[2]{\begin{exaBox}\begin{exampleT}\textbf{\small(#1)}\label{exa:#2}}{\hfill{\color{sthlmGreen}}\end{exampleT}\end{exaBox}}
 
 %======================================================================
