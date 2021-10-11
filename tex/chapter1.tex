@@ -43,7 +43,7 @@
 
 \rexa{exa:BDS}中的系统$(X,S_{t})$被称为Bebutov(平移)动力系统. 在这个系统的帮助下, 我们很容易展示不同种类的独立轨道的动力学(见, 例如\cite{Nemytskii60},\cite{Sibirsky75}和它们的参考文献). 
 
-\begin{remark}{闭算子\footnote{我们推荐初学者略过此注记}}{CEO}
+\begin{remark}{闭算子}{CEO}\footnote{我们推荐初学者略过此注记}
 	许多动力学的一般性质不需要假设演化算子$S_{t}$的连续性, 这对研究一些无穷维偏微分方程模型很重要. 根据\cite{Pata07}, 我们可以假设演化算子$S_{t}$在相应的空间$X$下是闭的, 来代替$S_{t}$的连续性要求. 这意味着, 对任意$t>0$, 在$n\to\infty$时$x_{n}\to x, S_{t}x_{n}\to y$, 则$S_{t}x=y$, 显然$S_{t}$的连续性可以得到闭性. 然而, 逆命题仅在一些额外条件下成立, 即可以证明如果$S_{t}$是闭的, 并且把任何紧集映成相对紧集, 则$x\mapsto S_{t}$是连续的. 的确, 设在$n\to\infty$时$x_{n}\to x$, 对任意$t>0$我们可以选择子列$\{n_{m}\}$, 使得$S_{t}x_{n_{m}}\to y$. 由$S_{t}$的闭性知, $S_{t}x=y$, 进一步, $\{S_{t}x_{n}\}$除了$y=S_{t}x$以外没有其他极限点, 这意味着$S_{t}$的极限性. 另一方面, 映射$$f(x)=\begin{cases}(1-x)^{-1},&\quad 0\leqslant x<1;\\x,&\quad x\geqslant 1,\end{cases}$$是一个闭算子但不是连续的(其他例子见\cite{Pata07}). 闭演化算子产生于一类状态依赖的时滞偏微分方程系统的长时间动力学的研究(见\ref{sec:6.2}).
 	
 	我们还注意到, 算子的闭性是(无界)线性算子理论中众所周知的概念, 见例如\cite{Dunford58}的第二章或\cite{Yosida74}的第二章. 我们知道, 演化算子语境中的闭性概念, 在\cite{Babin92}中作为(强连续)演化半群的(弱)闭性(亦可见\cite{Chueshov99}和下面的\rthm{thm:})和\cite{Pata07}中的一般情形出现. 
@@ -53,11 +53,11 @@
 
 \begin{definition}{拓扑等价}{TE}\index[word]{tuopudengjia@拓扑等价(topology equivalence)}\index[word]{tonggou@同构(isomorphic)}
 	设$(X,S_{t})$和$(\tilde{X},\tilde{S}_{t})$为两个动力系统, 如果存在同胚映射$h: X\cong\tilde{X}$的, 使得对任意$x\in X$和$t\in\mathbb{T}_{+}$, 都有$$
-	h(S_{t}x)=\tilde{S}_{t}h(x),$$则称动力系统$(X,S_{t})$和$(\tilde{X},\tilde{S}_{t})$\textbf{拓扑等价}(或\textbf{同构}), 记作$(X,S_{t})\cong (\tilde{X},\tilde{S}_{t})$.  此时称演化算子$S_{t}$与$\tilde{S}_{t}$\textbf{拓扑共轭}.  
+	h(S_{t}x)=\tilde{S}_{t}h(x),$$则称动力系统$(X,S_{t})$和$(\tilde{X},\tilde{S}_{t})$\textbf{拓扑等价}(或\textbf{同构}), 记作$(X,S_{t})\cong (\tilde{X},\tilde{S}_{t})$.  此时称同胚映射$h$为\textbf{同构映射}, 演化算子$S_{t}$与$\tilde{S}_{t}$\textbf{拓扑共轭}.  
 \end{definition}
 
-\begin{exercise}
-	设$h$是使得$(X,S_{t})$和$(\tilde{X},\tilde{S}_{t})$拓扑等价的同胚映射, 则$h^{-1}$亦是.
+\begin{exercise}\label{exe:ISO}
+	设$(X,S_{t})\cong(\tilde{X},\tilde{S}_{t})$, $h$是同构映射, 则$h^{-1}$亦是, 即对任意$t\geqslant 0$, 有$$h^{-1}(\tilde{S}_{t}\tilde{x})=S_{t}h^{-1}(\tilde{x}).$$
 \end{exercise}
 
 \begin{proof}
@@ -65,27 +65,80 @@
 	h^{-1}(\tilde{S_{t}}\tilde{x})=h^{-1}(\tilde{S_{t}}h(x))=h^{-1}h(S_{t}x)=S_{t}x=S_{t}(h^{-1}\tilde{x}).$$
 \end{proof}
 
-接下来用一个习题来说明\rdef{def:TE}. 
+\rexe{exe:ISO}表明, \rdef{def:TE}定义的二元关系是一种等价关系, 与证明同胚拓扑空间中的拓扑不变性类似, 今后证明拓扑等价的动力系统间的不变性时, 也仅需证明充分性或必要性中的其中一个. 接下来的习题是\rdef{def:TE}的具体例子. 
 
 \begin{exercise}
-设$\alpha,\beta>0$并且$\alpha,\beta\neq 1$, 则两个离散(?)系统(时间呢?)$(\mathbb{R}_{+},\alpha x)$和$(\mathbb{R}_{+},\beta x)$拓扑等价当且仅当$\alpha,\beta$同时大于$1$或小于$1$.
+设$\alpha,\beta>0$并且$\alpha,\beta\neq 1$, 则两个离散系统$(\mathbb{R}_{+},\alpha x)$和$(\mathbb{R}_{+},\beta x)$拓扑等价当且仅当$\alpha,\beta$同时大于$1$或小于$1$.
 \end{exercise}
 
 \begin{proof}
-	必要性???: 设$(\mathbb{R}_{+},\alpha x)\cong (\mathbb{R}_{+},\beta x)$, 则存在同胚映射$h$, 使得$$
-	h(\alpha x)=\beta h(x),$$
+	必要性: 设$(\mathbb{R}_{+},\alpha x)\cong (\mathbb{R}_{+},\beta x)$, 则存在同胚映射$h$, 使得$$
+	h(\alpha^{n} x)=\beta^{n} h(x),$$下面假设$0<\alpha <1<\beta$, 由$h(0)=\beta^{n} h(0)$知$h(0)=0$, 并且$$h(1)=\frac{h(\alpha^{n})}{\beta^{n}},\quad n\in\mathbb{Z}_{+}$$那么由$h$的连续性知, $$h(1)=\lim_{n\to\infty}\frac{h(\alpha^{n})}{\beta^{n}}=\lim_{n\to\infty}\frac{h(0)}{\beta^{n}}=0,$$这与$h$是双射矛盾.
 	
-	充分性: 设$\alpha,\beta$同时大于$1$或小于$1$, 则$\log_{\alpha}\beta>0$, 于是$h(x):=x^{\log_{\alpha}\beta}:\mathbb{R}_{+}\cong \mathbb{R}_{+}$, 并且对任意$x\in\mathbb{R}_{+}$, 有$$h(\alpha x)=(\alpha x)^{\log_{\alpha}\beta}=\beta x^{\log_{\alpha}\beta}=\beta h(x),$$即$(\mathbb{R}_{+},\alpha x)\cong (\mathbb{R}_{+},\beta x)$
+	充分性: 设$\alpha,\beta$同时大于$1$或小于$1$, 则$\log_{\alpha}\beta>0$, 于是$h(x):=x^{\log_{\alpha}\beta}:\mathbb{R}_{+}\cong \mathbb{R}_{+}$, 并且对任意$x\in\mathbb{R}_{+}$, $n\in \mathbb{Z}_{+}$, 有$$h(\alpha^{n} x)=(\alpha^{n} x)^{\log_{\alpha}\beta}=\beta^{n} x^{\log_{\alpha}\beta}=\beta^{n} h(x),$$即$(\mathbb{R}_{+},\alpha x)\cong (\mathbb{R}_{+},\beta x)$
 \end{proof}
 
 
 \section{轨道, 不变集和平衡点}
-现在我们来回忆一下动力系统理论中的几个著名概念(见, 例如)
+现在我们来回忆一下动力系统理论中的几个著名概念(见, 例如\cite{Babin92}, \cite{Chueshov99}, \cite{Nemytskii60}, \cite{Sibirsky75}, \cite{Temam97}以及这些专著中的参考文献).
 
 \begin{definition}{不变集}{IS}
-	设$S_{t}$是$X$.
+	设$S_{t}$是$X$上的演化半群, $D\subseteq X$, 如果对任意$t\geqslant 0$, 都有$$
+	S_{t}D\subseteq D(S_{t}D \supseteq D),$$则称$D$为(关于$S_{t}$)的\textbf{正(负)不变集}或\textbf{前(后)不变集}. 特别的, 若$D$既是正不变集, 又是负不变集, 则称$D$为\textbf{(严格)不变集}.
 \end{definition}
 
+下面的习题列举了一些不变集的性质. 
+
+\begin{exercise}
+	设$\{P_{i}\}_{i\in I}$是正不变集, $\{N_{j}\}_{j\in J}$是负不变集, 则$\bigcup\limits_{i\in I}P_{i},\bigcap\limits_{i\in I}P_{i}$是正不变集, $\bigcup\limits_{j\in J}N_{j}$是负不变集. 
+\end{exercise}
+
+\begin{proof}
+	\begin{gather}
+		S_{t}(\bigcup_{i\in I}P_{i})=\bigcup_{i\in I}S_{t}P_{i}\subseteq \bigcup_{i\in I}P_{i},\notag
+		\\S_{t}(\bigcap_{i\in I}P_{i})\subseteq\bigcap_{i\in I}S_{t}P_{i}\subseteq \bigcap_{i\in I}P_{i}.\notag
+		\\\bigcup_{j\in J}N_{j}\subseteq \bigcup_{j\in J}S_{t}N_{j}= S_{t}(\bigcup_{j\in J}N_{j}).\notag
+	\end{gather}
+\end{proof}
+
+\begin{remark}{}{IS}
+	这里$\bigcap\limits_{j\in J}N_{j}$不一定是负不变集, 原因在于对一般的映射$f:X\to Y$, 设$\{A_{i}\}_{i\in I}\subseteq 2^{X}$, 我们仅有
+	\begin{gather}
+		f\left(\bigcup_{i\in I}A_{i}\right)=\bigcup_{i\in I}f(A_{i}),\notag\\f\left(\bigcap_{i\in I}A_{i}\right)\subseteq\bigcap_{i\in I}f(A_{i}).\label{equ:IS}
+	\end{gather}
+	式子\requ{equ:IS}中"$\supseteq$"的反例容易构造, 例如令$f(x)=\sin x, A_{1}=[0,\pi], A_{2}=[2\pi, 3\pi]$即可. 
+\end{remark}
+
+\begin{exercise}
+	设$S_{t}$是满射, 若$P$是正不变集, 则$P^{c}$是负不变集; 设$S_{t}$是单射, 若$N$是负不变集, 则$N^{c}$是正不变集. 因此若$S_{t}$是双射, $I$是不变集, 则$I^{c}$是正不变集.
+\end{exercise}
+
+\begin{proof}
+	设$S_{t}$是满射, 则$$
+	S_{t}X=S_{t}(P\cup P^{c})=(S_{t}P)\cup (S_{t}P^{c})=X.$$由$S_{t}P\subseteq P$得到$$
+	P\cup S_{t}P^{c}=X,$$于是$P^{c}\subseteq S_{t}P^{c}$; 设$S_{t}$是单射, 任取$x\in N^{c}$, 假设$S_{t}x\notin N^{c}$, 即$S_{t}x\in N\subseteq S_{t}N$, 因此存在$y\in N$, 使得$S_{t}x=S_{t}y$, 由$S_{t}$是单射知$$x=y\in N,$$矛盾！故$S_{t}N^{c}\subseteq N^{c}$.
+\end{proof}
+
+\begin{exercise}
+	若$P$是正不变集, 则$\overline{P}$也是正不变集; 设$N$是相对紧集, 若$N$是负不变集, 则$\overline{N}$也是负不变集. 
+\end{exercise}
+
+\begin{proof}
+	设$P$正不变, 任取$x_{0}\in \overline{P}$, 若$x_{0}\in P$, 则$S_{t}x_{0}\in P\subset \overline{P}$; 若$x_{0}\in P^{\prime}$, 则存在$\{x_{n}\}_{n=1}^{\infty}\subseteq P$, 使得$x_{n}\to x_{0}$, 于是由$S_{t}$的连续性知, $$
+	S_{t}x_{0}=S_{t}\left(\lim_{n\to\infty}x_{n}\right)=\lim_{n\to\infty}S_{t}x_{n}\subset \overline{P}.$$
+	设$N$负不变, 任取$y_{0}\in \overline{N}$, 若$y_{0}\in N$, 则存在$x_{0}\in N\subseteq \overline{N}$, 使得$S_{t}x_{0}=y_{0}$; 若$y_{0}\in N^{\prime}$, 则存在$\{x_{n}\}_{n=1}^{\infty},\{y_{n}\}_{n=1}^{\infty}\subseteq N$, 使得$y_{n}\to y$, 并且$S_{t}x_{n}=y_{n}$, 由于$\overline{N}$紧, 则存在$\{x_{n_{m}}\}_{m=1}^{\infty}\subseteq \{x_{n}\}_{n=1}^{\infty}$, 使得$x_{n_{m}}\to x_{0}\in \overline{N}$, 于是$$
+	S_{t}x_{0}=S_{t}\left(\lim_{m\to\infty}x_{n_{m}}\right)=\lim_{m\to\infty}S_{t}x_{n_{m}}=\lim_{m\to\infty}y_{n_{m}}=y_{0}.$$
+\end{proof}
+
+\begin{exercise}
+	设$(X,S_{t})\cong(\tilde{X},\tilde{S}_{t})$, $h$是相应的同胚映射, $P, N, I$分别是正不变集, 负不变集和不变集当且仅当$h(P),h(N),h(I)$也分别是正不变集, 负不变集和不变集.
+\end{exercise}
+
+\begin{proof}
+	由\rexe{exe:ISO}和不变集的定义, 我们仅需证明$h(P),h(N)$分别是正不变集和负不变集.\begin{gather}
+		\tilde{S}_{t}(h(P))=h(S_{t}P)\subseteq h(P),\notag\\h(N)\subseteq h(S_{t}N)=\tilde{S}_{t}h(N).\notag
+	\end{gather}
+\end{proof}
 
 \section{Omega-极限集}
 \section{独立轨道的极限性质}

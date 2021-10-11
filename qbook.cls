@@ -51,6 +51,7 @@
 \RequirePackage[backend=biber, hyperref=auto, backref=true, backrefstyle=three, maxnames=4]{biblatex}
 \RequirePackage{xcolor}
 \RequirePackage{listings}
+\usepackage{ifthen} % 判断
 \RequirePackage{imakeidx}
 \makeindex[ % 设置符号索引
 	intoc = true,
@@ -314,6 +315,7 @@
 \newcommand{\rthm}[1]{\hyperref[#1]{定理\ref{#1}}}
 \newcommand{\rlem}[1]{\hyperref[#1]{引理\ref{#1}}}
 \newcommand{\rexa}[1]{\hyperref[#1]{例\ref{#1}}}
+\newcommand{\rexe}[1]{\hyperref[#1]{习题\ref{#1}}}
 \newcommand{\rerr}[1]{\hyperref[#1]{本书位置}}
 %======================================================================
 % 公式、图、表的编号为"3.1.1"的形式
@@ -397,7 +399,8 @@
 \theoremstyle{definition}
 \newtheorem{exercise}[tcb@cnt@definition]{习题}  %环境名exercise
 \newtheorem{observation}[tcb@cnt@definition]{\makebox[0pt][r]{\scriptsize\color{red!90}\textdbend\quad}\textbf{注}}
-\newenvironment{remark}[2]{\begin{observation}\textbf{\small(#1)}\label{rrmk:#2}}{\end{observation}}
+\newenvironment{remark}[2]{\begin{observation}\ifthenelse{\equal{#1}{}}{\label{rrmk:#2}}{\textbf{\small(#1)}\label{rrmk:#2}}}{\end{observation}}
+
 %======================================================================
 %定制example环境
 \RequirePackage[framemethod=default]{mdframed} 
@@ -430,7 +433,7 @@ linewidth=1pt]{exaBox}
 
 \theoremstyle{blacknumexa}
 \newtheorem{exampleT}[tcb@cnt@definition]{例}
-\newenvironment{example}[2]{\begin{exaBox}\begin{exampleT}\textbf{\small(#1)}\label{exa:#2}}{\hfill{\color{sthlmGreen}}\end{exampleT}\end{exaBox}}
+\newenvironment{example}[2]{\begin{exaBox}\begin{exampleT}\ifthenelse{\equal{#1}{}}{\label{exa:#2}}{\textbf{\small(#1)}\label{exa:#2}}}{\hfill{\color{sthlmGreen}}\end{exampleT}\end{exaBox}}
 
 %======================================================================
 %定制例子中的横线
