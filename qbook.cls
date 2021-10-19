@@ -86,7 +86,7 @@
 % 设置 PDF 文件信息
 \hypersetup{
 	pdfauthor = {沈卓洋},
-	pdftitle = {Dynamics of Quasi-Stable Dissipative Systems学习指南},
+	pdftitle = {拟稳定耗散系统动力学},
 	pdfkeywords = {动力系统}
 }
 %======================================================================
@@ -394,7 +394,7 @@
  }
 
 \newtcbtheorem[auto counter,number within=section]{definition}{定义}{defstyle}{def}
-\newtcbtheorem[use counter from=definition]{thmorem}{定理}{thmstyle}{thm}
+\newtcbtheorem[use counter from=definition]{theorem}{定理}{thmstyle}{thm}
 \newtcbtheorem[use counter from=definition]{propsition}{性质}{propstyle}{prop}
 \theoremstyle{definition}
 \newtheorem{exercise}[tcb@cnt@definition]{习题}  %环境名exercise

@@ -5,13 +5,13 @@
 我们主要遵循\cite{Nemytskii60}和\cite{Sibirsky75}的表述方式, 并且依赖经典的常微分材料; 见\cite{Coddington55}, \cite{Hartman02}, \cite{Lefschetz77}以及\cite{Bautin90}和\cite{Reissing74}.
 
 \section{演化算子和动力系统}
-如同介绍中已经提及的, 动力系统的概念包括可能出现的状态的集合(相空间)和状态关于时间的演化法则. 在之后的叙述中, 我们选取完备的度量空间作为相空间, 记$\mathbb{T}_{+}$为$\mathbb{T}$上的非负元素用以代表时间, 其中$\mathbb{T}$为$\mathbb{R}$或$\mathbb{Z}$.
+如同介绍中已经提及的, 动力系统的概念包括可能出现的状态的集合(相空间)和状态关于时间的演化法则. 在之后的叙述中, 我们选取完备的度量空间作为相空间, 记$\mathbb{T}^{+}$为$\mathbb{T}$上的非负元素用以代表时间, 其中$\mathbb{T}$为$\mathbb{R}$或$\mathbb{Z}$.
 
 \begin{definition}{演化算子}{EO}\index[word]{yanhuasuanzi@演化算子(evolution operator)}\index[symbol]{$S_{t}$}
 	设$X$是完备的度量空间, $\mathbb{T}=\mathbb{Z}$或$\mathbb{R}$, 对任意$t\in\mathbb{T}$, $S_{t}:X\mapsto X$是连续映射, 并且满足半群性质, 即：$$S_{0}=id_{X},\quad S_{t+\tau}=S_{t}\circ S_{\tau},\quad\forall t,\tau\in\mathbb{T}^{+},$$则称$\{S_{t}\}_{t\in \mathbb{T}^{+}}$为演化算子(或演化半群、半流). 
 \end{definition}
 
-在$\mathbb{T}=\mathbb{R}$的情形中, 我们额外假设映射$t:\mapsto S_{t}x$是$\mathbb{R}_{+}$到$X$上关于$x$的连续映射.  我们称$(X,S_{t})$为相空间为$X$、演化算子为$S_{t}$的\textbf{动力系统}. 
+在$\mathbb{T}=\mathbb{R}$的情形中, 我们额外假设映射$t:\mapsto S_{t}x$是$\mathbb{R}^{+}$到$X$上关于$x$的连续映射.  我们称$(X,S_{t})$为相空间为$X$、演化算子为$S_{t}$的\textbf{动力系统}. 
 
 在$\mathbb{T}=\mathbb{Z}$时, 演化算子(以及动力系统)被称为离散(或关于离散时间)的.  如果$\mathbb{T}=\mathbb{R}$, 则$S_{t}$(同理, $(X,S_{t})$)被称为关于时间连续的演化算子(动力系统). 如果相空间可以被定义维数(例如, 当$X$为线性空间时), 则$\dim X$被称为动力系统的维数. 
 
@@ -26,13 +26,13 @@
 \end{example}
 
 \begin{example}{映射}{MP}
-	设$X$是完备的度量空间. 考虑映射$F:X\mapsto X$. 令$n\in\mathbb{Z}_{+}$, 则$F$的$n$重复合$S_{n}\equiv F\circ\cdots\cdots F$形成了一个演化算子序列$\{S_{n}\}_{n=0}^{\infty}$. 如果$F$是连续映射, 则我们得到了一个离散的动力系统$(X,S_{n})$. 
+	设$X$是完备的度量空间. 考虑映射$F:X\mapsto X$. 令$n\in\mathbb{Z}^{+}$, 则$F$的$n$重复合$S_{n}\equiv F\circ\cdots\cdots F$形成了一个演化算子序列$\{S_{n}\}_{n=0}^{\infty}$. 如果$F$是连续映射, 则我们得到了一个离散的动力系统$(X,S_{n})$. 
 \end{example}
 
 在\rexa{exa:MP}中, $(X,F)$完全地决定了(离散)动力系统$(X,S_{n})$, 因此$(X,F)$也经常被叫做动力系统. 接下来的例子展示了如何通过单个映射来生成一个连续时间的动力系统. 
 
 \begin{example}{映射生成的连续时间系统}{CTS}
-	和\rexa{exa:MP}一样, 设$X$是完备的度量空间, 并且$F:X\mapsto X$是连续映射. 考虑连续参数的微分方程$$u(t+1)=F(u(t)),\quad t\in\mathbb{R}_{+}.$$这个方程的任意解都可以轻易地通过定义在$[0,1]$上的函数$\phi(\xi)$, 以以下形式来构造, $$u(t)=S^{n}(\phi(t-n)),\quad n\leqslant t<n+1,\quad n\in\mathbb{Z}_{+},$$其中$S_{n}\equiv F\circ\cdots\circ F$. $u$在$\mathbb{R}_{+}$上是连续的, 当$$\phi\in Y=\{\phi\in C([0,1],X):\phi(1)=F(\phi(0))\},$$其中$C([0,1],X)$是$[0,1]$到$X$的连续函数. 现在我们可以通过以下形式来定义$Y$中的连续时间演化算子$$S_{t}:\phi(\xi)\mapsto F^{[t+\xi]}(\phi(\{t+\xi\})),\quad t\in\mathbb{R}_{+},$$其中$[\xi]$是$\xi$的整数部分, $\{\xi\}$是$\xi$的小数部分. 
+	和\rexa{exa:MP}一样, 设$X$是完备的度量空间, 并且$F:X\mapsto X$是连续映射. 考虑连续参数的微分方程$$u(t+1)=F(u(t)),\quad t\in\mathbb{R}^{+}.$$这个方程的任意解都可以轻易地通过定义在$[0,1]$上的函数$\phi(\xi)$, 以以下形式来构造, $$u(t)=S^{n}(\phi(t-n)),\quad n\leqslant t<n+1,\quad n\in\mathbb{Z}^{+},$$其中$S_{n}\equiv F\circ\cdots\circ F$. $u$在$\mathbb{R}^{+}$上是连续的, 当$$\phi\in Y=\{\phi\in C([0,1],X):\phi(1)=F(\phi(0))\},$$其中$C([0,1],X)$是$[0,1]$到$X$的连续函数. 现在我们可以通过以下形式来定义$Y$中的连续时间演化算子$$S_{t}:\phi(\xi)\mapsto F^{[t+\xi]}(\phi(\{t+\xi\})),\quad t\in\mathbb{R}^{+},$$其中$[\xi]$是$\xi$的整数部分, $\{\xi\}$是$\xi$的小数部分. 
 \end{example}
 
 在\rexa{exa:CTS}中, 我们得到了一个连续时间的系统$(Y,S_{t})$. 这种类型的系统(主要是$X$是$\mathbb{R}$上的区间的情形)在\cite{Sharkovsky86}中有密集讨论; 亦可见\cite{Sharkovsky89}. 动力系统$(Y,S_{t})$的特点提供了最近被介绍和发展的理想湍流的概念的动机; 见\cite{Sharkovsky06}. 
@@ -52,7 +52,7 @@
 在定性行为的研究中, 动力系统的等价概念发挥着重要的作用. 这种等价关系使我们能够将广泛的动力系统划分成各种具有非常相似行为的系统. 
 
 \begin{definition}{拓扑等价}{TE}\index[word]{tuopudengjia@拓扑等价(topology equivalence)}\index[word]{tonggou@同构(isomorphic)}
-	设$(X,S_{t})$和$(\tilde{X},\tilde{S}_{t})$为两个动力系统, 如果存在同胚映射$h: X\cong\tilde{X}$的, 使得对任意$x\in X$和$t\in\mathbb{T}_{+}$, 都有$$
+	设$(X,S_{t})$和$(\tilde{X},\tilde{S}_{t})$为两个动力系统, 如果存在同胚映射$h: X\cong\tilde{X}$的, 使得对任意$x\in X$和$t\in\mathbb{T}^{+}$, 都有$$
 	h(S_{t}x)=\tilde{S}_{t}h(x),$$则称动力系统$(X,S_{t})$和$(\tilde{X},\tilde{S}_{t})$\textbf{拓扑等价}(或\textbf{同构}), 记作$(X,S_{t})\cong (\tilde{X},\tilde{S}_{t})$.  此时称同胚映射$h$为\textbf{同构映射}, 演化算子$S_{t}$与$\tilde{S}_{t}$\textbf{拓扑共轭}.  
 \end{definition}
 
@@ -61,21 +61,21 @@
 \end{exercise}
 
 \begin{proof}
-	由$h^{-1},(h^{-1})^{-1}=h$的连续性知, $h^{-1}$是同胚映射. 任取$\tilde{x}\in \tilde{X}$, 由$h$是双射知, 存在$x\in X$使得$h(x)=\tilde{x}$, 那么对任意$t\in\mathbb{T}_{+}$, 有$$
+	由$h^{-1},(h^{-1})^{-1}=h$的连续性知, $h^{-1}$是同胚映射. 任取$\tilde{x}\in \tilde{X}$, 由$h$是双射知, 存在$x\in X$使得$h(x)=\tilde{x}$, 那么对任意$t\in\mathbb{T}^{+}$, 有$$
 	h^{-1}(\tilde{S_{t}}\tilde{x})=h^{-1}(\tilde{S_{t}}h(x))=h^{-1}h(S_{t}x)=S_{t}x=S_{t}(h^{-1}\tilde{x}).$$
 \end{proof}
 
 \rexe{exe:ISO}表明, \rdef{def:TE}定义的二元关系是一种等价关系, 与证明同胚拓扑空间中的拓扑不变性类似, 今后证明拓扑等价的动力系统间的不变性时, 也仅需证明充分性或必要性中的其中一个. 接下来的习题是\rdef{def:TE}的具体例子. 
 
 \begin{exercise}
-设$\alpha,\beta>0$并且$\alpha,\beta\neq 1$, 则两个离散系统$(\mathbb{R}_{+},\alpha x)$和$(\mathbb{R}_{+},\beta x)$拓扑等价当且仅当$\alpha,\beta$同时大于$1$或小于$1$.
+设$\alpha,\beta>0$并且$\alpha,\beta\neq 1$, 则两个离散系统$(\mathbb{R}^{+},\alpha x)$和$(\mathbb{R}^{+},\beta x)$拓扑等价当且仅当$\alpha,\beta$同时大于$1$或小于$1$.
 \end{exercise}
 
 \begin{proof}
-	必要性: 设$(\mathbb{R}_{+},\alpha x)\cong (\mathbb{R}_{+},\beta x)$, 则存在同胚映射$h$, 使得$$
-	h(\alpha^{n} x)=\beta^{n} h(x),$$下面假设$0<\alpha <1<\beta$, 由$h(0)=\beta^{n} h(0)$知$h(0)=0$, 并且$$h(1)=\frac{h(\alpha^{n})}{\beta^{n}},\quad n\in\mathbb{Z}_{+}$$那么由$h$的连续性知, $$h(1)=\lim_{n\to\infty}\frac{h(\alpha^{n})}{\beta^{n}}=\lim_{n\to\infty}\frac{h(0)}{\beta^{n}}=0,$$这与$h$是双射矛盾.
+	必要性: 设$(\mathbb{R}^{+},\alpha x)\cong (\mathbb{R}^{+},\beta x)$, 则存在同胚映射$h$, 使得$$
+	h(\alpha^{n} x)=\beta^{n} h(x),$$下面假设$0<\alpha <1<\beta$, 由$h(0)=\beta^{n} h(0)$知$h(0)=0$, 并且$$h(1)=\frac{h(\alpha^{n})}{\beta^{n}},\quad n\in\mathbb{Z}^{+}$$那么由$h$的连续性知, $$h(1)=\lim_{n\to\infty}\frac{h(\alpha^{n})}{\beta^{n}}=\lim_{n\to\infty}\frac{h(0)}{\beta^{n}}=0,$$这与$h$是双射矛盾.
 	
-	充分性: 设$\alpha,\beta$同时大于$1$或小于$1$, 则$\log_{\alpha}\beta>0$, 于是$h(x):=x^{\log_{\alpha}\beta}:\mathbb{R}_{+}\cong \mathbb{R}_{+}$, 并且对任意$x\in\mathbb{R}_{+}$, $n\in \mathbb{Z}_{+}$, 有$$h(\alpha^{n} x)=(\alpha^{n} x)^{\log_{\alpha}\beta}=\beta^{n} x^{\log_{\alpha}\beta}=\beta^{n} h(x),$$即$(\mathbb{R}_{+},\alpha x)\cong (\mathbb{R}_{+},\beta x)$
+	充分性: 设$\alpha,\beta$同时大于$1$或小于$1$, 则$\log_{\alpha}\beta>0$, 于是$h(x):=x^{\log_{\alpha}\beta}:\mathbb{R}^{+}\cong \mathbb{R}^{+}$, 并且对任意$x\in\mathbb{R}^{+}$, $n\in \mathbb{Z}^{+}$, 有$$h(\alpha^{n} x)=(\alpha^{n} x)^{\log_{\alpha}\beta}=\beta^{n} x^{\log_{\alpha}\beta}=\beta^{n} h(x),$$即$(\mathbb{R}^{+},\alpha x)\cong (\mathbb{R}^{+},\beta x)$
 \end{proof}
 
 
@@ -140,10 +140,115 @@
 	\end{gather}
 \end{proof}
 
+\begin{definition}{轨道}{tail}\index[word]{guidao@轨道(tail)}\index[word]{zhengbangui@正半轨(positive semitrajectory)}\index[symbol]{$\gamma_{D}^{t}$}\index[symbol]{$\gamma_{D}^{+}$}
+	设$(X,S_{t})$是动力系统, $D\subseteq X$, 令$$
+	\gamma^{t}_{D}:=\bigcup_{\tau\geqslant t}S_{\tau}D,$$则称$\gamma^{t}_{D}$为集合$D$从时间$t$出发的\textbf{轨道}, 特别的, 将$\gamma_{D}^{0}$记作$\gamma_{D}^{+}$, 那么显然有$\gamma_{D}^{t}=\gamma_{S_{t}D}^{0}\equiv\gamma_{S_{t}D}^{+}$. 若$D=\{v\}$, 我们称$\gamma_{v}^{+}$为从$v$点出发的\textbf{正半轨}.
+\end{definition}
+
+\begin{exercise}
+	设$(X,S_{t})$是动力系统, $\gamma_{D}^{t}$是正不变集.
+\end{exercise}
+
+\begin{proof}
+	对任意$t^{\prime}\in\mathbb{T}^{+}$, 我们有$$S_{t^{\prime}}\gamma_{D}^{t}=S_{t^{\prime}}\left(\bigcup_{\tau\geqslant t}S_{\tau}D\right)=\bigcup_{\tau\geqslant t}S_{\tau+t^{\prime}}D=\bigcup_{\tau\geqslant t+t^{\prime}}S_{\tau}D\subseteq S_{t^{\prime}}\bigcup_{\tau\geqslant t}S_{\tau}D=\gamma_{D}^{t}.$$因此$\gamma_{D}^{t}$是正不变集. 
+\end{proof}
+
+\begin{definition}{全轨道}{FT}\index[symbol]{$\gamma$}
+	设$(X,S_{t})$是动力系统, 设$\gamma:=\{u(t)|t\in\mathbb{T}\}$, 如果$\gamma$满足对任意$\tau\in\mathbb{T}$以及$t\in\mathbb{T}^{+}$, 都有$$S_{t}u(\tau)=u(t+\tau),$$则称$\gamma$为\textbf{全轨道}. 
+\end{definition}
+
+\begin{exercise}
+	设$h:(X,S_{t})\cong(\tilde{X},\tilde{S}_{t})$, 则$\gamma$是$X$的全轨道当且仅当$h(\gamma)$是$Y$的全轨道.
+\end{exercise}
+
+\begin{proof}
+	设$\gamma:=\{u(t)|t\in\mathbb{T}\}$, 考虑$h(\gamma):=\{\tilde{u}(t):=h(u(t))|t\in\mathbb{T}\}$, 那么对任意$t\in\mathbb{T}^{+}$, $$\tilde{S}_{t}\tilde{u}(\tau)=\tilde{S}_{t}h(u(\tau))=h(S_{t}u(\tau))=h(u(t+\tau))=\tilde{u}(t+\tau),$$因此$h(\gamma)$是全轨道.
+\end{proof}
+
+\begin{exercise}
+	设$(X,S_{t})$是动力系统, 则$\gamma$不变集.
+\end{exercise}
+
+\begin{proof}
+	对任意$t^{\prime}\in\mathbb{T}^{+}$, 我们有$$S_{t^{\prime}}\gamma=\{u(t+t^{\prime})|t\in\mathbb{T}\}=\{u(t)|t\in\mathbb{T}\}=\gamma,$$因此$\gamma$是不变集. 
+\end{proof}
+
+\begin{definition}{片段}{segment}\index[word]{pianduan@片段(segment)}\index[symbol]{$\gamma^{\tau_{1},\tau_{2}}$}
+	设$(X,S_{t})$是动力系统, $\gamma$是全轨道, 令$$\gamma^{\tau_{1},\tau_{2}}:=\{u(t)|\tau_{1}\leqslant t\leqslant \tau_{2}\},$$则称$\gamma^{\tau_{1},\tau_{2}}$为全轨道$\gamma$上$[\tau_{1},\tau_{2}]$时间段上的\textbf{片段}. 
+\end{definition}
+
+\begin{definition}{周期轨}{PT}\index[word]{zhouqigui@周期轨(periodic trajectory)}\index[word]{zhouqi@周期(period)}\index[word]{zuixiaozhengzhouqi@最小正周期(minimal positive period)}
+	设$(X,S_{t})$是动力系统, $\gamma$是全轨道, 如果存在$T>0$, 使得对任意$t\in\mathbb{T}$, 都有
+	\begin{equation}\label{equ:PT}
+		u(t+T)=u(t),
+	\end{equation}则称$\gamma$为\textbf{周期轨},  如果所有满足\requ{equ:PT}的$T$中存在最小正值$T_{0}$, 则将$T_{0}$称为$\gamma$的\textbf{周期}.
+\end{definition}
+
+\begin{exercise}
+	设$h:(X,S_{t})\cong(\tilde{X},\tilde{S}_{t})$, $\gamma$是$X$上的周期轨当且仅当$h(\gamma)$是$\tilde{X}$上的周期轨, 且$\gamma$与$h(\gamma)$有相同的周期. 
+\end{exercise}
+
+\begin{proof}
+	设$\gamma:=\{u(t)|t\in\mathbb{T}\}$是$X$上的周期轨, 则存在$T>0$, 使得对任意$t\in\mathbb{T}$, 都有$$u(t+T)=u(t),$$考虑$h(\gamma):=\{\tilde{u}(t)|t\in\mathbb{T}\}$, 那么$$\tilde{u}(t+T)=h(u(t+T))=h(u(t))=\tilde{u}(t).$$于是$h(\gamma)$是周期轨. 
+\end{proof}
+
+\begin{definition}{不动点}{FP}\index[word]{budongdian@不动点(fixed point)}\index[word]{pinghengdian@平衡点(equilibrium point)}\index[word]{wendindian@稳定点(stable point)}\index[word]{zhudian@驻点(stationary point)}
+	设$(X,S_{t})$是动力系统, $v_{0}\in X$, 如果对任意$t\in\mathbb{T}^{+}$, 都有$$S_{t}v_{0}=v_{0},$$则称$v_{0}$为\textbf{不动点}或\textbf{平衡点}, \textbf{稳定点}, \textbf{驻点}.
+\end{definition}
+
+\begin{exercise}
+	设$h:(X,S_{t})\cong(\tilde{X},\tilde{S}_{t})$, $v_{0}\in X$是不动点当且仅当$h(v_{0})$是不动点.
+\end{exercise}
+
+\begin{proof}
+	对任意$t\in\mathbb{T}^{+}$, $$\tilde{S}_{t}h(v_{0})=h(S_{t}v_{0})=h(v_{0}).$$于是$h(v_{0})$是不动点.
+\end{proof}
+
+\begin{exercise}
+	设$F$为所有不动点的构成的集合, 则$F$是闭集. 
+\end{exercise}
+
+\begin{proof}
+	设$\{x_{n}\}_{n=1}^{\infty}\subseteq F$并且$x_{n}\to x_{0}$, 那么由$S_{t}$的连续性知, $$
+	S_{t}x_{0}=S_{t}(\lim_{n\to\infty}x_{n})=\lim_{n\to\infty}(S_{t}x_{n})=\lim_{n\to\infty}x_{n}=x_{0}.$$因此$x_{0}\in F$, 即$F$是闭集.
+\end{proof}
+
+\begin{exercise}
+	正半轨仅能收敛到不动点, 即若有$\lim\limits_{t\to\infty}S_{t}w=v$, 则$v$是不动点.
+\end{exercise}
+
+\begin{proof}
+	对任意$t\in\mathbb{T}^{+}$, 有$$S_{t}v=S_{t}\left(\lim_{\tau\to\infty}S_{\tau}w\right)=\lim_{\tau\to\infty}S_{t+\tau}w=\lim_{\tau\to\infty}S_{\tau}w=v.$$因此$v$是不动点.
+\end{proof}
+
+下面一个关于不动点存在性的定理, 需要用到Schauder不动点定理\footnote{Schauder不动点定理(见\cite{Zeidler86}第一卷第二章)说的是, 任何一个将Banach空间中的凸紧集映到自身的连续映射都有不动点.}.
+
+\begin{theorem}{}{FP}
+	设$(X,S_{t})$是连续动力系统, $M\subseteq X$是正不变集, 且$M$同胚与某个Banach空间中的凸紧集, 则$M$中包含不动点.
+\end{theorem}
+
+\begin{proof}
+	设$h:M\cong\tilde{M}$, 取$\{t_{n}\}_{n=1}^{\infty}$是正数列且$t_{n}\to 0$, 令$$R_{n}=hS_{t_{n}}h^{-1}:\tilde{M}\mapsto\tilde{M},$$ 由Schauder不动点定理知, 对于每个$R_{n}$, 至少存在一个不动点, 任取一个并记作$y_{n}$, 而$\tilde{M}$紧进而列紧, 因此$\{y_{n}\}_{n=1}^{\infty}$存在收敛子列$\{y_{n_{m}}\}_{m=1}^{\infty}$, 并记$y_{n_{m}}\to y_{0}$, 此时令$x_{m}=h^{-1}y_{n_{m}}$, 那么
+	\begin{equation}\label{equ:FP1}
+		S_{t_{n_{m}}}x_{m}=x_{m},
+	\end{equation}
+	并且
+	\begin{equation}\label{equ:FP2}
+		\lim_{m\to\infty}x_{m}=x_{0}=h^{-1}y_{0},
+	\end{equation} 由$S_{t}$关于$t$和$x$的连续性知, 对任意$\varepsilon>0$, 存在$M_{\varepsilon}>0$, 使得当$m\geqslant M_{\varepsilon}$, 并且$0\leqslant t\leqslant t_{n_{m}}$时, $$
+	d(S_{t}x_{m},x_{0})< \varepsilon,$$由于$x_{m}$是$t_{n_{m}}$周期的, 因此对任意$t\in\mathbb{T}^{+}$, 上述式子均成立, 于是对任意$t\in\mathbb{T}^{+}$, 都有$$\lim_{m\to\infty}d(S_{t}x_{m},x_{0})=d(S_{t}x_{0},x_{0})<\varepsilon,$$即$x_{0}$是不动点.
+\end{proof}
+
+在\ref{sec:1.8}中, 我们将应用\rthm{thm:FP}来证明$2$维动力系统版本的Poincar\'{e}-Bendixson定理.
+
+\begin{remark}{}{}
+	在\rthm{thm:FP}条件下, \ref{equ:FP1}和\ref{equ:FP2}表明, 不动点$x_{0}$的任意邻域内, 都存在周期任意小的周期点. 事实上满足这种性质的$x_{0}$也确实是不动点. 然而, 我们不能保证周期\ref{equ:FP1}中的$t_{n_{m}}$是最小的, 因此我们并不知道是否出现了周期任意小的周期点. 不仅如此, 从\cite{Yorke69}中(亦可见下面的\rthm{thm:1.8.1})我们可以知道, 光滑非线性的有限维自治常微分方程的解的可能周期存在下界的限制. 在抛物型偏微分方程模型中关于类似的限制, 我们引用了\cite{Robinson06}和\cite{Robinson13}(亦可见\cite{Robinson11}). 
+\end{remark}
+
 \section{Omega-极限集}
 \section{独立轨道的极限性质}
 \section{轨道的循环性质}
 \section{平衡点与Lyapunov稳定性}
 \section{$1$维连续系统的完整理论}
-\section{二维系统定性行为的可能类型}
+\section{$2$维系统定性行为的可能类型}\label{sec:1.8}
 \section{分歧理论举例}
